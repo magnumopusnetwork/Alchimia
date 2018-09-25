@@ -48,7 +48,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56";
+    const char* pszTimestamp = "CBC News 24/Sep/2018 3rd tornado hit eastern Ontario last week";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -118,10 +118,10 @@ public:
         nDefaultPort = 9333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1537842570, 2092353012, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0x424a21c65b4c5bae503ecb2a5fccc6f804758a7c46c3a02255d28ed167388626"));
+        assert(genesis.hashMerkleRoot == uint256S("0x1bea74f7ee18efdd08ad2d18d50d222a8510800d2aabb84b4afe4cb6a49ca42e"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         vSeeds.emplace_back("seed-a.alchimia.loshan.co.uk", true);
@@ -166,8 +166,8 @@ public:
 
         chainTxData = ChainTxData{
             // Data as of block 59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011 (height 1353397).
-            1516406833, // * UNIX timestamp of last known number of transactions
-            19831879,  // * total number of transactions between genesis and that timestamp
+            1537842570, // * UNIX timestamp of last known number of transactions
+            0,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
             0.06     // * estimated number of transactions per second after that timestamp
         };
@@ -220,10 +220,10 @@ public:
         nDefaultPort = 19335;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1486949366, 293345, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1537842570, 2092353012, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(consensus.hashGenesisBlock == uint256S("0x424a21c65b4c5bae503ecb2a5fccc6f804758a7c46c3a02255d28ed167388626"));
+        assert(genesis.hashMerkleRoot == uint256S("0x1bea74f7ee18efdd08ad2d18d50d222a8510800d2aabb84b4afe4cb6a49ca42e"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
