@@ -8,7 +8,7 @@ recommended to upgrade to this version as soon as possible.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/alchimia-project/alchimia/issues>
+  <https://github.com/magnumopusnetwork/Alchimia/issues>
 
 Upgrading and downgrading
 =========================

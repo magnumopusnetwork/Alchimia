@@ -531,7 +531,7 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/alchimia-project/alchimia>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/magnumopusnetwork/Alchimia>";
     const std::string URL_WEBSITE = "<https://alchimia.org>";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2011, COPYRIGHT_YEAR) + " ") + "\n" +

@@ -28,7 +28,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/alchimia-project/alchimia.git"
+- "url": "https://github.com/magnumopusnetwork/Alchimia.git"
   "dir": "alchimia"
 files: []
 script: |

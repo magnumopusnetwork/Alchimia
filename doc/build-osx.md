@@ -33,7 +33,7 @@ Build Alchimia Core
 
 1. Clone the alchimia source code and cd into `alchimia`
 
-        git clone https://github.com/alchimia-project/alchimia
+        git clone https://github.com/magnumopusnetwork/Alchimia
         cd alchimia
 
 2.  Build alchimia-core:

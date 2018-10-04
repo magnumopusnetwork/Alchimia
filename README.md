@@ -1,7 +1,7 @@
 Alchimia Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/alchimia-project/alchimia.svg?branch=master)](https://travis-ci.org/alchimia-project/alchimia)
+[![Build Status](https://travis-ci.org/magnumopusnetwork/Alchimia.svg?branch=master)](https://travis-ci.org/magnumopusnetwork/Alchimia)
 
 https://alchimia.org
 
@@ -27,7 +27,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/alchimia-project/alchimia/tags) are created
+completely stable. [Tags](https://github.com/magnumopusnetwork/Alchimia/tags) are created
 regularly to indicate new official, stable release versions of Alchimia Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
