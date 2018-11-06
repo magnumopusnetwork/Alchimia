@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your alchimias from being stolen by malware infecting your computer.</source>
-        <translation>暗号化処理を終了させるために、すぐに%1を閉じるでしょう。あなたのコンピュータに感染したマルウェアによって、盗まれたビットコインは暗号化をしていても完全に守ることができないことを覚えておいてください。</translation>
+        <translation>暗号化処理を終了させるために、すぐに%1を閉じるでしょう。あなたのコンピュータに感染したマルウェアによって、盗まれアルキミアは暗号化をしていても完全に守ることができないことを覚えておいてください。</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -871,7 +871,7 @@
     </message>
     <message>
         <source>Attempting to spend alchimias that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>使用したビットコインで、未処理となっているものは、ネットワークによって受領されません。</translation>
+        <translation>使用しアルキミアで、未処理となっているものは、ネットワークによって受領されません。</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -2254,7 +2254,7 @@
     </message>
     <message>
         <source>You can sign messages/agreements with your addresses to prove you can receive alchimias sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>送信されたビットコインを受信できることを証明するために、アドレスのメッセージや同意事項に署名できます。フィッシング攻撃が署名を利用する可能性があるので、署名が曖昧やランダムでないことに注意してください。詳細な明細のみに署名されます。</translation>
+        <translation>送信されアルキミアを受信できることを証明するために、アドレスのメッセージや同意事項に署名できます。フィッシング攻撃が署名を利用する可能性があるので、署名が曖昧やランダムでないことに注意してください。詳細な明細のみに署名されます。</translation>
     </message>
     <message>
         <source>The Alchimia address to sign the message with</source>
