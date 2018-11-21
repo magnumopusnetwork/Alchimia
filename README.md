@@ -3,7 +3,7 @@ Alchimia Core integration/staging tree
 
 [![Build Status](https://travis-ci.org/magnumopusnetwork/Alchimia.svg?branch=master)](https://travis-ci.org/magnumopusnetwork/Alchimia)
 
-https://alchimia.org
+https://magnumopusnetwork.com
 
 What is Alchimia?
 ----------------
@@ -15,7 +15,7 @@ out collectively by the network. Alchimia Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Alchimia Core software, see [https://alchimia.org](https://alchimia.org).
+the Alchimia Core software, see [https://magnumopusnetwork.com](https://magnumopusnetwork.com).
 
 License
 -------
