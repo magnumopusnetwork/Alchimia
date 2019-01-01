@@ -285,7 +285,7 @@ void BitcoinGUI::createActions()
     QActionGroup *tabGroup = new QActionGroup(this);
 
     QImage imgOverview(":/icons/overview");
-    overviewAction = new QAction(QIcon(QPixmap::fromImage(imgOverview)), tr("&Overview"), this);
+    overviewAction = new QAction(QIcon(QPixmap::fromImage(imgOverview)), tr("&Alchimia"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
@@ -471,6 +471,7 @@ void BitcoinGUI::createTopToolBar()
         toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         toolbar->addAction(overviewAction);
         toolbar->setIconSize(QSize(22, 22));
+        toolbar->setStyleSheet("QToolBar { border-bottom: 1px solid lightgray; }");
         overviewAction->setChecked(true);
         addToolBar(Qt::TopToolBarArea, toolbar);
     }
@@ -490,6 +491,7 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->setIconSize(QSize(48, 48));
+        toolbar->setStyleSheet("QToolBar { border-left: 1px solid lightgray; }");
         addToolBar(Qt::RightToolBarArea, toolbar);
     }
 }
@@ -1254,7 +1256,7 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    setStyleSheet(QString("QLabel { color : %1 }").arg(platformStyle->SingleColor().name()));
+    setStyleSheet(QString("QLabel { color : black }"));
 }
 
 /** So that it responds to button clicks */
