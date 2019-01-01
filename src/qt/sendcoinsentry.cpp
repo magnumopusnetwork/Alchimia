@@ -23,11 +23,14 @@ SendCoinsEntry::SendCoinsEntry(const PlatformStyle *_platformStyle, QWidget *par
 {
     ui->setupUi(this);
 
-    ui->addressBookButton->setIcon(platformStyle->SingleColorIcon(":/icons/address-book"));
-    ui->pasteButton->setIcon(platformStyle->SingleColorIcon(":/icons/editpaste"));
-    ui->deleteButton->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
-    ui->deleteButton_is->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
-    ui->deleteButton_s->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
+    QImage addressBookImg(":/icons/address-book");
+    ui->addressBookButton->setIcon(QIcon(QPixmap::fromImage(addressBookImg)));
+    QImage imgEditpaste(":/icons/editpaste");
+    ui->pasteButton->setIcon(QIcon(QPixmap::fromImage(imgEditpaste)));
+    QImage imgDeleteButton(":/icons/remove");
+    ui->deleteButton->setIcon(QIcon(QPixmap::fromImage(imgDeleteButton)));
+    ui->deleteButton_is->setIcon(QIcon(QPixmap::fromImage(imgDeleteButton)));
+    ui->deleteButton_s->setIcon(QIcon(QPixmap::fromImage(imgDeleteButton)));
 
     setCurrentWidget(ui->SendCoins);
 

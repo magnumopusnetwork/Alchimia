@@ -272,7 +272,8 @@ void CoinControlDialog::lockCoin()
     COutPoint outpt(uint256S(contextMenuItem->text(COLUMN_TXHASH).toStdString()), contextMenuItem->text(COLUMN_VOUT_INDEX).toUInt());
     model->lockCoin(outpt);
     contextMenuItem->setDisabled(true);
-    contextMenuItem->setIcon(COLUMN_CHECKBOX, platformStyle->SingleColorIcon(":/icons/lock_closed"));
+    QImage imgEncrypt(":/icons/lock_closed");
+    contextMenuItem->setIcon(COLUMN_CHECKBOX, QIcon(QPixmap::fromImage(imgEncrypt)));
     updateLabelLocked();
 }
 
@@ -706,7 +707,8 @@ void CoinControlDialog::updateView()
                 COutPoint outpt(txhash, out.i);
                 coinControl->UnSelect(outpt); // just to be sure
                 itemOutput->setDisabled(true);
-                itemOutput->setIcon(COLUMN_CHECKBOX, platformStyle->SingleColorIcon(":/icons/lock_closed"));
+                QImage imgEncrypt(":/icons/lock_closed");
+                itemOutput->setIcon(COLUMN_CHECKBOX, QIcon(QPixmap::fromImage(imgEncrypt)));
             }
 
             // set checkbox

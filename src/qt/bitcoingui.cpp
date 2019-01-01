@@ -178,6 +178,9 @@ BitcoinGUI::BitcoinGUI(const PlatformStyle *_platformStyle, const NetworkStyle *
     // Needs walletFrame to be initialized
     createActions();
 
+    // Create the top toolbar
+    createTopToolBar();
+
     // Create application menu bar
     createMenuBar();
 
@@ -281,36 +284,40 @@ void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(platformStyle->SingleColorIcon(":/icons/overview"), tr("&Overview"), this);
+    QImage imgOverview(":/icons/overview");
+    overviewAction = new QAction(QIcon(QPixmap::fromImage(imgOverview)), tr("&Overview"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    sendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/send"), tr("&Send"), this);
+    QImage imgSend(":/icons/send");
+    sendCoinsAction = new QAction(QIcon(QPixmap::fromImage(imgSend)), tr("&Send"), this);
     sendCoinsAction->setStatusTip(tr("Send coins to a Alchimia address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
 
-    sendCoinsMenuAction = new QAction(platformStyle->TextColorIcon(":/icons/send"), sendCoinsAction->text(), this);
+    sendCoinsMenuAction = new QAction(QIcon(QPixmap::fromImage(imgSend)), sendCoinsAction->text(), this);
     sendCoinsMenuAction->setStatusTip(sendCoinsAction->statusTip());
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
-    receiveCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
+    QImage imgReceive(":/icons/receiving_addresses");
+    receiveCoinsAction = new QAction(QIcon(QPixmap::fromImage(imgReceive)), tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and alchimia: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(receiveCoinsAction);
 
-    receiveCoinsMenuAction = new QAction(platformStyle->TextColorIcon(":/icons/receiving_addresses"), receiveCoinsAction->text(), this);
+    receiveCoinsMenuAction = new QAction(QIcon(QPixmap::fromImage(imgReceive)), receiveCoinsAction->text(), this);
     receiveCoinsMenuAction->setStatusTip(receiveCoinsAction->statusTip());
     receiveCoinsMenuAction->setToolTip(receiveCoinsMenuAction->statusTip());
 
-    historyAction = new QAction(platformStyle->SingleColorIcon(":/icons/history"), tr("&Transactions"), this);
+    QImage imgHistory(":/icons/history");
+    historyAction = new QAction(QIcon(QPixmap::fromImage(imgHistory)), tr("&Transactions"), this);
     historyAction->setStatusTip(tr("Browse transaction history"));
     historyAction->setToolTip(historyAction->statusTip());
     historyAction->setCheckable(true);
@@ -322,6 +329,7 @@ void BitcoinGUI::createActions()
     // can be triggered from the tray menu, and need to show the GUI to be useful.
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(gotoOverviewPage()));
+    connect(overviewAction, SIGNAL(toggled(bool)), this, SLOT(overviewActionToggled(bool)));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(sendCoinsAction, SIGNAL(triggered()), this, SLOT(gotoSendCoinsPage()));
     connect(sendCoinsMenuAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -454,18 +462,35 @@ void BitcoinGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
+void BitcoinGUI::createTopToolBar()
+{
+    if (walletFrame)
+    {
+        QToolBar *toolbar = new QToolBar(tr("Top toolbar"), this);
+        toolbar->setMovable(false);
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        toolbar->addAction(overviewAction);
+        toolbar->setIconSize(QSize(22, 22));
+        overviewAction->setChecked(true);
+        addToolBar(Qt::TopToolBarArea, toolbar);
+    }
+}
+
+
 void BitcoinGUI::createToolBars()
 {
     if(walletFrame)
     {
-        QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
+        QToolBar *toolbar = new QToolBar(tr("Tabs toolbar"), this);
+        toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
         toolbar->setMovable(false);
-        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
         toolbar->addAction(overviewAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
-        overviewAction->setChecked(true);
+        toolbar->setIconSize(QSize(48, 48));
+        addToolBar(Qt::RightToolBarArea, toolbar);
     }
 }
 
@@ -688,6 +713,17 @@ void BitcoinGUI::gotoOverviewPage()
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
+void BitcoinGUI::overviewActionToggled(bool checked)
+{
+    if (overviewAction->isChecked()) {
+        QImage imgOverview(":/icons/overview");
+        overviewAction->setIcon(QIcon(QPixmap::fromImage(imgOverview)));
+    } else {
+        QImage imgOverview(":/icons/overview");
+        overviewAction->setIcon(QIcon(QPixmap::fromImage(imgOverview)));
+    }
+}
+
 void BitcoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
@@ -743,7 +779,8 @@ void BitcoinGUI::updateNetworkState()
     tooltip = QString("<nobr>") + tooltip + QString("</nobr>");
     connectionsControl->setToolTip(tooltip);
 
-    connectionsControl->setPixmap(platformStyle->SingleColorIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+    QImage img(icon);
+    connectionsControl->setPixmap(QIcon(QPixmap::fromImage(img)).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
 }
 
 void BitcoinGUI::setNumConnections(int count)
@@ -820,7 +857,8 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
     if(secs < 90*60)
     {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
-        labelBlocksIcon->setPixmap(platformStyle->SingleColorIcon(":/icons/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        QImage imgSynced(":/icons/synced");
+        labelBlocksIcon->setPixmap(QIcon(QPixmap::fromImage(imgSynced)).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 
 #ifdef ENABLE_WALLET
         if(walletFrame)
@@ -1046,7 +1084,8 @@ bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 
 void BitcoinGUI::setHDStatus(int hdEnabled)
 {
-    labelWalletHDStatusIcon->setPixmap(platformStyle->SingleColorIcon(hdEnabled ? ":/icons/hd_enabled" : ":/icons/hd_disabled").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+    QImage imgHd(hdEnabled ? ":/icons/hd_enabled" : ":/icons/hd_disabled");
+    labelWalletHDStatusIcon->setPixmap(QIcon(QPixmap::fromImage(imgHd)).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
     labelWalletHDStatusIcon->setToolTip(hdEnabled ? tr("HD key generation is <b>enabled</b>") : tr("HD key generation is <b>disabled</b>"));
 
     // eventually disable the QLabel to set its opacity to 50% 
@@ -1055,6 +1094,8 @@ void BitcoinGUI::setHDStatus(int hdEnabled)
 
 void BitcoinGUI::setEncryptionStatus(int status)
 {
+    QImage imgUnlocked(":/icons/lock_open");
+    QImage imgLocked(":/icons/lock_closed");
     switch(status)
     {
     case WalletModel::Unencrypted:
@@ -1065,7 +1106,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Unlocked:
         labelWalletEncryptionIcon->show();
-        labelWalletEncryptionIcon->setPixmap(platformStyle->SingleColorIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelWalletEncryptionIcon->setPixmap(QIcon(QPixmap::fromImage(imgUnlocked)).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelWalletEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1073,7 +1114,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Locked:
         labelWalletEncryptionIcon->show();
-        labelWalletEncryptionIcon->setPixmap(platformStyle->SingleColorIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelWalletEncryptionIcon->setPixmap(QIcon(QPixmap::fromImage(imgLocked)).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelWalletEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);

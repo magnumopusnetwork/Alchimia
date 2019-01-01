@@ -127,6 +127,8 @@ private:
 
     /** Create the main UI actions. */
     void createActions();
+    /** Create the top toolbar */
+    void createTopToolBar();
     /** Create the menu bar and sub-menus. */
     void createMenuBar();
     /** Create the toolbars */
@@ -193,6 +195,7 @@ private Q_SLOTS:
 #ifdef ENABLE_WALLET
     /** Switch to overview (home) page */
     void gotoOverviewPage();
+    void overviewActionToggled(bool checked);
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to receive coins page */

@@ -36,10 +36,14 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
         ui->deleteAddress->setIcon(QIcon());
         ui->exportButton->setIcon(QIcon());
     } else {
-        ui->newAddress->setIcon(platformStyle->SingleColorIcon(":/icons/add"));
-        ui->copyAddress->setIcon(platformStyle->SingleColorIcon(":/icons/editcopy"));
-        ui->deleteAddress->setIcon(platformStyle->SingleColorIcon(":/icons/remove"));
-        ui->exportButton->setIcon(platformStyle->SingleColorIcon(":/icons/export"));
+        QImage imgNewAddress(":/icons/add");
+        ui->newAddress->setIcon(QIcon(QPixmap::fromImage(imgNewAddress)));
+        QImage imgCopyAddress(":/icons/editcopy");
+        ui->copyAddress->setIcon(QIcon(QPixmap::fromImage(imgCopyAddress)));
+        QImage imgDeleteAddress(":/icons/remove");
+        ui->deleteAddress->setIcon(QIcon(QPixmap::fromImage(imgDeleteAddress)));
+        QImage imgExportButton(":/icons/export");
+        ui->exportButton->setIcon(QIcon(QPixmap::fromImage(imgExportButton)));
     }
 
     switch(mode)
