@@ -342,50 +342,63 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
 #endif // ENABLE_WALLET
 
-    quitAction = new QAction(platformStyle->TextColorIcon(":/icons/quit"), tr("E&xit"), this);
+    QImage imgQuit(":/icons/quit");
+    quitAction = new QAction(QIcon(QPixmap::fromImage(imgQuit)), tr("E&xit"), this);
     quitAction->setStatusTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-    aboutAction = new QAction(platformStyle->TextColorIcon(":/icons/about"), tr("&About %1").arg(tr(PACKAGE_NAME)), this);
+    QImage imgAbout(":/icons/about");
+    aboutAction = new QAction(QIcon(QPixmap::fromImage(imgAbout)), tr("&About %1").arg(tr(PACKAGE_NAME)), this);
     aboutAction->setStatusTip(tr("Show information about %1").arg(tr(PACKAGE_NAME)));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutAction->setEnabled(false);
-    aboutQtAction = new QAction(platformStyle->TextColorIcon(":/icons/about_qt"), tr("About &Qt"), this);
+    QImage imgAboutQt(":/icons/about_qt");
+    aboutQtAction = new QAction(QIcon(QPixmap::fromImage(imgAboutQt)), tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
-    optionsAction = new QAction(platformStyle->TextColorIcon(":/icons/options"), tr("&Options..."), this);
+    QImage imgOptions(":/icons/options");
+    optionsAction = new QAction(QIcon(QPixmap::fromImage(imgOptions)), tr("&Options..."), this);
     optionsAction->setStatusTip(tr("Modify configuration options for %1").arg(tr(PACKAGE_NAME)));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     optionsAction->setEnabled(false);
-    toggleHideAction = new QAction(platformStyle->TextColorIcon(":/icons/about"), tr("&Show / Hide"), this);
+    toggleHideAction = new QAction(QIcon(QPixmap::fromImage(imgAbout)), tr("&Show / Hide"), this);
     toggleHideAction->setStatusTip(tr("Show or hide the main Window"));
 
-    encryptWalletAction = new QAction(platformStyle->TextColorIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
+    QImage imgLockClosed(":/icons/lock_closed");
+    encryptWalletAction = new QAction(QIcon(QPixmap::fromImage(imgLockClosed)), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setStatusTip(tr("Encrypt the private keys that belong to your wallet"));
     encryptWalletAction->setCheckable(true);
-    backupWalletAction = new QAction(platformStyle->TextColorIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
+    QImage imgFilesave(":/icons/filesave");
+    backupWalletAction = new QAction(QIcon(QPixmap::fromImage(imgFilesave)), tr("&Backup Wallet..."), this);
     backupWalletAction->setStatusTip(tr("Backup wallet to another location"));
-    changePassphraseAction = new QAction(platformStyle->TextColorIcon(":/icons/key"), tr("&Change Passphrase..."), this);
+    QImage imgKey(":/icons/key");
+    changePassphraseAction = new QAction(QIcon(QPixmap::fromImage(imgKey)), tr("&Change Passphrase..."), this);
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
-    signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
+    QImage imgEdit(":/icons/edit");
+    signMessageAction = new QAction(QIcon(QPixmap::fromImage(imgEdit)), tr("Sign &message..."), this);
     signMessageAction->setStatusTip(tr("Sign messages with your Alchimia addresses to prove you own them"));
-    verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
+    QImage imgVerify(":/icons/verify");
+    verifyMessageAction = new QAction(QIcon(QPixmap::fromImage(imgVerify)), tr("&Verify message..."), this);
     verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified Alchimia addresses"));
 
-    openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
+    QImage imgDebug(":/icons/debugwindow");
+    openRPCConsoleAction = new QAction(QIcon(QPixmap::fromImage(imgDebug)), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
     // initially disable the debug window menu item
     openRPCConsoleAction->setEnabled(false);
 
-    usedSendingAddressesAction = new QAction(platformStyle->TextColorIcon(":/icons/address-book"), tr("&Sending addresses..."), this);
+    QImage imgAddressBook(":/icons/address-book");
+    usedSendingAddressesAction = new QAction(QIcon(QPixmap::fromImage(imgAddressBook)), tr("&Sending addresses..."), this);
     usedSendingAddressesAction->setStatusTip(tr("Show the list of used sending addresses and labels"));
-    usedReceivingAddressesAction = new QAction(platformStyle->TextColorIcon(":/icons/address-book"), tr("&Receiving addresses..."), this);
+    usedReceivingAddressesAction = new QAction(QIcon(QPixmap::fromImage(imgAddressBook)), tr("&Receiving addresses..."), this);
     usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
 
-    openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
+    QImage imgOpen(":/icons/open");
+    openAction = new QAction(QIcon(QPixmap::fromImage(imgOpen)), tr("Open &URI..."), this);
     openAction->setStatusTip(tr("Open a alchimia: URI or payment request"));
 
-    showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
+    QImage imgInfo(":/icons/info");
+    showHelpMessageAction = new QAction(QIcon(QPixmap::fromImage(imgInfo)), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
     showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible Alchimia command-line options").arg(tr(PACKAGE_NAME)));
 
