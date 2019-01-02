@@ -8,7 +8,7 @@ https://magnumopusnetwork.com
 What is Alchimia?
 ----------------
 
-Alchimia is a Token System for Magnum Opus Network.
+Alchimia is a Token System for "Magnum Opus Network".
 
 The Magnum Opus Network is an open blockchain system. It's primary purpose is to compliment the websites of small, medium and large enterprise businesses with their own token based on using the Magnum Opus blockchain network.
 
