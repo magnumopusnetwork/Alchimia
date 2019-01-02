@@ -8,11 +8,14 @@ https://magnumopusnetwork.com
 What is Alchimia?
 ----------------
 
-Alchimia is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Alchimia uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Alchimia Core is the name of open source
-software which enables the use of this currency.
+Alchimia is a Token System for Magnum Opus Network.
+
+The Magnum Opus Network is an open blockchain system. It's primary purpose is to compliment the websites of small, medium and large enterprise businesses with their own token based on using the Magnum Opus blockchain network.
+
+Our objective is to create a product/platform that allows businesses to use "STRATEGIC, INTELLIGENT MARKETING" by offering measurable points/rewards to their customers to market their products and/or services.
+
+The deployment of the token redefines the core function of a common website. By offering rewards in unique and very flexible ways it will attract more traffic to business websites thereby increasing sales and driving more revenue.
+
 
 For more information, as well as an immediately useable, binary version of
 the Alchimia Core software, see [https://magnumopusnetwork.com](https://magnumopusnetwork.com).
